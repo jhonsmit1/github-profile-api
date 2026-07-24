@@ -2,7 +2,7 @@ import type { AWS } from '@serverless/typescript';
 
 const serverlessConfiguration: AWS = {
   service: 'github-profile-api',
-  frameworkVersion: '4',
+  frameworkVersion: '3',
   plugins: ['serverless-offline'],
   provider: {
     name: 'aws',
