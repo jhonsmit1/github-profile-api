@@ -46,6 +46,10 @@ lerna-debug.log*
 .temp
 .tmp
 
+# Serverless artifacts
+.serverless/
+.esbuild/
+
 # Runtime data
 pids
 *.pid

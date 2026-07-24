@@ -3,7 +3,7 @@ import type { AWS } from '@serverless/typescript';
 const serverlessConfiguration: AWS = {
   service: 'github-profile-api',
   frameworkVersion: '3',
-  plugins: ['serverless-offline'],
+  plugins: ['serverless-esbuild', 'serverless-offline'],
   provider: {
     name: 'aws',
     runtime: 'nodejs20.x',
@@ -40,6 +40,19 @@ const serverlessConfiguration: AWS = {
   },
   package: {
     individually: false,
+  },
+  custom: {
+    esbuild: {
+      bundle: true,
+      minify: false,
+      sourcemap: true,
+      target: 'node20',
+      platform: 'node',
+      define: {
+        'require.resolve': undefined,
+      },
+      external: ['aws-sdk', '@nestjs/websockets', '@nestjs/websockets/*', '@nestjs/microservices', '@nestjs/microservices/*'],
+    },
   },
 };
 
