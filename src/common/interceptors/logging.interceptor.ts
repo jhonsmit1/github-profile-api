@@ -1,6 +1,7 @@
 import {
   CallHandler,
   ExecutionContext,
+  Inject,
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
@@ -13,7 +14,9 @@ import { AppLoggerService } from '../logger/app-logger.service';
 export class LoggingInterceptor implements NestInterceptor {
   private static readonly CONTEXT = 'HTTP';
 
-  constructor(private readonly logger: AppLoggerService) {}
+  constructor(
+    @Inject(AppLoggerService) private readonly logger: AppLoggerService,
+  ) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<unknown> {
     const request = context.switchToHttp().getRequest<Request>();

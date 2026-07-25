@@ -9,6 +9,7 @@ export class GetGithubUserUseCase {
     constructor(
         @Inject(GITHUB_API_PORT)
         private readonly githubApiPort: GithubApiPort,
+        @Inject(AppLoggerService)
         private readonly logger: AppLoggerService,
     ) {}
 
